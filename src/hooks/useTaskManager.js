@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 export const PRIORITY_OPTIONS = ['Low', 'Medium', 'High']
 export const STATUS_OPTIONS = ['Pending', 'In Progress', 'Done']
@@ -22,6 +22,8 @@ const INITIAL_TASK_FORM = {
   status: 'Pending',
 }
 
+const STORAGE_KEY = 'smart-task-manager-state'
+
 const useTaskManager = () => {
   const [users, setUsers] = useState([])
   const [currentUser, setCurrentUser] = useState(null)
@@ -30,6 +32,7 @@ const useTaskManager = () => {
   const [tasks, setTasks] = useState([])
   const [activityLog, setActivityLog] = useState([])
   const [message, setMessage] = useState('')
+  const [isHydrated, setIsHydrated] = useState(false)
 
   const [registerForm, setRegisterForm] = useState(INITIAL_REGISTER_FORM)
   const [loginForm, setLoginForm] = useState(INITIAL_LOGIN_FORM)
@@ -147,6 +150,41 @@ const useTaskManager = () => {
     setCurrentUser(null)
     setMessage('Signed out.')
   }
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const stored = window.localStorage.getItem(STORAGE_KEY)
+    if (stored) {
+      try {
+        const data = JSON.parse(stored)
+        setUsers(data.users || [])
+        setTeams(data.teams || [])
+        setProjects(data.projects || [])
+        setTasks(data.tasks || [])
+        setActivityLog(data.activityLog || [])
+        if (data.currentUserId && Array.isArray(data.users)) {
+          const found = data.users.find((user) => user.id === data.currentUserId) || null
+          setCurrentUser(found)
+        }
+      } catch (error) {
+        console.warn('Failed to load saved Smart Task Manager data.', error)
+      }
+    }
+    setIsHydrated(true)
+  }, [])
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !isHydrated) return
+    const payload = {
+      users,
+      currentUserId: currentUser?.id || null,
+      teams,
+      projects,
+      tasks,
+      activityLog,
+    }
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(payload))
+  }, [users, currentUser, teams, projects, tasks, activityLog, isHydrated])
 
   const handleTeamCreate = (event) => {
     event.preventDefault()

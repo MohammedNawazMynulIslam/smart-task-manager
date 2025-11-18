@@ -31,8 +31,9 @@ function Dashboard({ stats, recentReassignments, onReassign }) {
             <p>Capacity guardrail</p>
             <strong>Reassign Tasks</strong>
           </div>
-          <button className="btn accent" onClick={onReassign}>
-            Reassign Tasks
+          <button className="btn reassign-btn" onClick={onReassign}>
+            <span>Reassign Tasks</span>
+           
           </button>
         </div>
         <p className="small">
