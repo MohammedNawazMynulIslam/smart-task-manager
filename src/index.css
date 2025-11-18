@@ -1,0 +1,392 @@
+:root {
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: #050c1a;
+  color: #e6edf7;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #102347, #050c1a 55%);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.app-header h1 {
+  margin: 0.25rem 0;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  color: #7db4ff;
+  margin-bottom: 0.1rem;
+}
+
+.lede {
+  max-width: 560px;
+  margin: 0;
+  color: #cbd5f5;
+}
+
+.user-card {
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.user-card .label {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: #9ac0ff;
+}
+
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.45rem 1.1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn.primary {
+  background: linear-gradient(120deg, #6f89ff, #9f7bff);
+  color: white;
+  box-shadow: 0 10px 30px rgba(133, 114, 255, 0.3);
+}
+
+.btn.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn.accent {
+  background: #f97316;
+  color: white;
+}
+
+.btn.ghost {
+  background: transparent;
+  color: #a4c3ff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn.subtle {
+  background: rgba(255, 255, 255, 0.08);
+  color: #a4c3ff;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.toast {
+  padding: 0.75rem 1rem;
+  background: rgba(15, 185, 129, 0.15);
+  color: #8ef7cb;
+  border: 1px solid rgba(142, 247, 203, 0.3);
+  border-radius: 0.75rem;
+}
+
+.panel {
+  background: rgba(10, 17, 35, 0.8);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 20px 60px rgba(5, 12, 26, 0.6);
+}
+
+.auth-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  color: #a7bcdf;
+  margin-bottom: 1rem;
+}
+
+input,
+textarea,
+select {
+  border-radius: 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.6rem 0.75rem;
+  background: rgba(3, 11, 30, 0.8);
+  color: #e4eeff;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid #6f89ff;
+  border-color: transparent;
+}
+
+.dashboard {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.metric strong {
+  font-size: 2rem;
+}
+
+.metric.stretch {
+  grid-column: span 2;
+}
+
+.metric-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.grid.two-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.assign-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.split {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.split label {
+  flex: 1;
+}
+
+.warning {
+  border: 1px solid rgba(249, 115, 22, 0.5);
+  background: rgba(249, 115, 22, 0.08);
+}
+
+.warning-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.team-card {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 0.85rem;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.team-card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  color: #94a9c6;
+}
+
+.team-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.team-card li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.chip {
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.85rem;
+}
+
+.chip-alert {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fda4af;
+}
+
+.empty {
+  color: #7f8ca6;
+  margin: 0;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+}
+
+.table-head,
+.table-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 0.8fr 0.8fr 0.9fr;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  align-items: center;
+}
+
+.table-head {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #7f8ca6;
+}
+
+.task-title {
+  font-weight: 600;
+}
+
+.tag {
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.45rem;
+  font-size: 0.85rem;
+}
+
+.tag.priority-low {
+  background: rgba(34, 197, 94, 0.15);
+  color: #a7f3d0;
+}
+
+.tag.priority-medium {
+  background: rgba(250, 204, 21, 0.18);
+  color: #fde68a;
+}
+
+.tag.priority-high {
+  background: rgba(239, 68, 68, 0.18);
+  color: #fecdd3;
+}
+
+.actions {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: flex-end;
+}
+
+.filters {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.activity-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.activity-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.activity-list.compact li {
+  font-size: 0.85rem;
+}
+
+.small {
+  font-size: 0.85rem;
+  color: #94a9c6;
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    flex-direction: column;
+  }
+
+  .metric.stretch {
+    grid-column: auto;
+  }
+
+  .table-head,
+  .table-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .table-head span:nth-child(n + 3),
+  .table-row span:nth-child(n + 3) {
+    display: none;
+  }
+}
